@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<title>AWS資格クイズ</title>
+<meta name="description" content="AWS認定資格対策クイズ。CLF-C02、SAA-C03、DVA-C02、SOA-C02、SAP-C02、DOP-C02をまとめて学習できます。">
+
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+  <h1 id="pageTitle">AWS資格クイズ</h1>
+  <p id="pageDesc">AWS認定資格を選んで、ランダム50問に挑戦しよう</p>
+</header>
+
+<nav id="examList" class="exam-list"></nav>
+<nav id="quizList" class="quiz-list"></nav>
+
+<main class="layout">
+
+  <aside class="ad-box ad-left">
+    <p>スポンサーリンク</p>
+
+    <script async
+      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8398161859137802"
+      crossorigin="anonymous"></script>
+
+    <ins class="adsbygoogle"
+      style="display:block"
+      data-ad-client="ca-pub-8398161859137802"
+      data-ad-slot="5599163841"
+      data-ad-format="auto"
+      data-full-width-responsive="true"></ins>
+
+    <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+  </aside>
+
+  <section class="quiz-box">
+    <div class="status">
+      <span id="counter">1 / 50</span>
+      <span id="score">スコア: 0</span>
+    </div>
+
+    <div class="progress">
+      <div id="progressBar"></div>
+    </div>
+
+    <h2 id="question">読み込み中...</h2>
+
+    <div id="choices"></div>
+
+    <p id="result"></p>
+  </section>
+
+  <aside class="ad-box ad-right">
+    <p>スポンサーリンク</p>
+
+    <ins class="adsbygoogle"
+      style="display:block"
+      data-ad-client="ca-pub-8398161859137802"
+      data-ad-slot="5599163841"
+      data-ad-format="auto"
+      data-full-width-responsive="true"></ins>
+
+    <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+  </aside>
+
+</main>
+
+<!-- CLF-C02 -->
+<script src="data/clf/cloud-concepts.js"></script>
+<script src="data/clf/security.js"></script>
+<script src="data/clf/technology.js"></script>
+<script src="data/clf/billing.js"></script>
+<script src="data/clf/practice.js"></script>
+
+<!-- SAA-C03 -->
+<script src="data/saa/design-secure.js"></script>
+<script src="data/saa/design-resilient.js"></script>
+<script src="data/saa/performance.js"></script>
+<script src="data/saa/cost.js"></script>
+
+<!-- DVA-C02 -->
+<script src="data/dva/development.js"></script>
+<script src="data/dva/security.js"></script>
+<script src="data/dva/deployment.js"></script>
+<script src="data/dva/monitoring.js"></script>
+
+<!-- SOA-C02 -->
+<script src="data/soa/monitoring.js"></script>
+<script src="data/soa/networking.js"></script>
+<script src="data/soa/security.js"></script>
+<script src="data/soa/automation.js"></script>
+
+<!-- SAP-C02 -->
+<script src="data/sap/organization.js"></script>
+<script src="data/sap/design.js"></script>
+<script src="data/sap/migration.js"></script>
+<script src="data/sap/cost.js"></script>
+
+<!-- DOP-C02 -->
+<script src="data/dop/sdlc.js"></script>
+<script src="data/dop/configuration.js"></script>
+<script src="data/dop/resilience.js"></script>
+<script src="data/dop/monitoring.js"></script>
+
+<script src="script.js"></script>
+
+</body>
+</html>
