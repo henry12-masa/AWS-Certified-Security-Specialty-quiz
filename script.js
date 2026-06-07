@@ -3,32 +3,53 @@ const type = params.get("type") || "sapOrganization";
 
 const quizInfo = {
   sapOrganization: {
-    title: "組織とガバナンス",
-    desc: "AWS Organizations・Control Tower・SCP・マルチアカウント設計"
+    title: "SAP 組織とガバナンス",
+    desc: "Organizations・Control Tower・SCP・マルチアカウント設計"
   },
   sapDesign: {
-    title: "高度なアーキテクチャ設計",
+    title: "SAP 高度な設計",
     desc: "高可用性・DR・ネットワーク・セキュア設計"
   },
   sapMigration: {
-    title: "移行とモダナイゼーション",
+    title: "SAP 移行",
     desc: "DMS・MGN・Snowball・7R移行戦略"
   },
   sapCost: {
-    title: "コスト最適化",
+    title: "SAP コスト最適化",
     desc: "Savings Plans・RI・S3ライフサイクル・Trusted Advisor"
   },
   sapPractice: {
-    title: "総合演習",
+    title: "SAP 総合演習",
     desc: "SAP-C02本番対策ミックス問題"
+  },
+
+  dopSdlc: {
+    title: "DOP SDLC自動化",
+    desc: "CodePipeline・CodeBuild・CodeDeploy"
+  },
+  dopConfiguration: {
+    title: "DOP 構成管理",
+    desc: "CloudFormation・Config・Systems Manager"
+  },
+  dopResilience: {
+    title: "DOP 高可用性・復旧",
+    desc: "DR・RTO・RPO・復旧戦略"
+  },
+  dopMonitoring: {
+    title: "DOP 監視とログ",
+    desc: "CloudWatch・CloudTrail・X-Ray"
+  },
+  dopPractice: {
+    title: "DOP 総合演習",
+    desc: "DOP-C02本番対策ミックス問題"
   }
 };
 
 const currentInfo = quizInfo[type] || quizInfo.sapOrganization;
 
-document.title = `SAP-C02 ${currentInfo.title}`;
+document.title = `AWS Professional クイズ - ${currentInfo.title}`;
 document.getElementById("pageTitle").textContent =
-  `AWS Solutions Architect Professional（SAP-C02）`;
+  "AWS Professional クイズ";
 
 document.getElementById("pageDesc").textContent = currentInfo.desc;
 
