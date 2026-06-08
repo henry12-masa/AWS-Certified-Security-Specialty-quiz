@@ -4,7 +4,6 @@ const exam = params.get("exam") || "sap";
 const type = params.get("type");
 
 const exams = {
-  
   sap: {
     title: "AWS Solutions Architect Professional（SAP-C02）",
     desc: "組織設計・高度なアーキテクチャ・移行・コスト最適化",
@@ -30,8 +29,8 @@ const exams = {
   }
 };
 
-const currentExam = exams[exam] || exams.clf;
-const currentType = type || Object.keys(currentExam.categories)[0];
+const currentExam = exams[exam] || exams.sap;
+const currentType = type || "all";
 
 document.title = currentExam.title;
 document.getElementById("pageTitle").textContent = currentExam.title;
@@ -46,7 +45,11 @@ examList.innerHTML = Object.keys(exams).map(key => `
   </a>
 `).join("");
 
-quizList.innerHTML = Object.keys(currentExam.categories).map(key => `
+quizList.innerHTML = `
+  <a href="?exam=${exam}" class="${currentType === "all" ? "active" : ""}">
+    全カテゴリ50問
+  </a>
+` + Object.keys(currentExam.categories).map(key => `
   <a href="?exam=${exam}&type=${key}" class="${key === currentType ? "active" : ""}">
     ${currentExam.categories[key]}
   </a>
@@ -65,8 +68,34 @@ function shuffle(array){
   return [...array].sort(() => Math.random() - 0.5);
 }
 
-const rawQuestions = window.quizData?.[currentType] || [];
-let questions = shuffle(rawQuestions.map(normalizeQuestion)).slice(0, 50);
+function getQuestions(){
+  let sourceQuestions = [];
+
+  if (currentType === "all") {
+    Object.keys(currentExam.categories).forEach(key => {
+      if (window.quizData?.[key]) {
+        sourceQuestions = sourceQuestions.concat(window.quizData[key]);
+      }
+    });
+  } else {
+    sourceQuestions = window.quizData?.[currentType] || [];
+  }
+
+  const seen = new Set();
+
+  return shuffle(
+    sourceQuestions
+      .map(normalizeQuestion)
+      .filter(q => {
+        if (!q.question || !q.choices || !q.answer) return false;
+        if (seen.has(q.question)) return false;
+        seen.add(q.question);
+        return true;
+      })
+  ).slice(0, 50);
+}
+
+let questions = getQuestions();
 
 let current = 0;
 let score = 0;
@@ -84,7 +113,11 @@ function showQuestion(){
     counter.textContent = "0 / 0";
     questionEl.textContent = "問題データがありません";
     choicesEl.innerHTML = "";
-    resultEl.textContent = `window.quizData.${currentType} が読み込まれていません`;
+
+    resultEl.textContent = currentType === "all"
+      ? `${exam} のカテゴリJSが読み込まれていません`
+      : `window.quizData.${currentType} が読み込まれていません`;
+
     return;
   }
 
