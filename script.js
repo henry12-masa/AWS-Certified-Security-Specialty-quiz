@@ -1,63 +1,98 @@
 const params = new URLSearchParams(location.search);
-const type = params.get("type") || "sapOrganization";
 
-const quizInfo = {
-  sapOrganization: {
-    title: "SAP 組織とガバナンス",
-    desc: "Organizations・Control Tower・SCP・マルチアカウント設計"
-  },
-  sapDesign: {
-    title: "SAP 高度な設計",
-    desc: "高可用性・DR・ネットワーク・セキュア設計"
-  },
-  sapMigration: {
-    title: "SAP 移行",
-    desc: "DMS・MGN・Snowball・7R移行戦略"
-  },
-  sapCost: {
-    title: "SAP コスト最適化",
-    desc: "Savings Plans・RI・S3ライフサイクル・Trusted Advisor"
-  },
-  sapPractice: {
-    title: "SAP 総合演習",
-    desc: "SAP-C02本番対策ミックス問題"
+const exam = params.get("exam") || "clf";
+const type = params.get("type");
+
+const exams = {
+  clf: {
+    title: "AWS Certified Cloud Practitioner（CLF-C02）",
+    desc: "クラウド基礎・セキュリティ・AWSサービス・料金",
+    categories: {
+      clfCloudConcepts: "クラウド概念",
+      clfSecurity: "セキュリティ",
+      clfTechnology: "AWSサービス",
+      clfBilling: "料金・請求",
+      clfPractice: "総合演習"
+    }
   },
 
-  dopSdlc: {
-    title: "DOP SDLC自動化",
-    desc: "CodePipeline・CodeBuild・CodeDeploy"
+  saa: {
+    title: "AWS Solutions Architect Associate（SAA-C03）",
+    desc: "セキュア設計・高可用性・性能・コスト最適化",
+    categories: {
+      saaDesignSecure: "セキュア設計",
+      saaDesignResilient: "高可用性設計",
+      saaPerformance: "性能最適化",
+      saaCost: "コスト最適化"
+    }
   },
-  dopConfiguration: {
-    title: "DOP 構成管理",
-    desc: "CloudFormation・Config・Systems Manager"
+
+  dva: {
+    title: "AWS Developer Associate（DVA-C02）",
+    desc: "開発・セキュリティ・デプロイ・監視",
+    categories: {
+      dvaDevelopment: "開発",
+      dvaSecurity: "セキュリティ",
+      dvaDeployment: "デプロイ",
+      dvaMonitoring: "監視"
+    }
   },
-  dopResilience: {
-    title: "DOP 高可用性・復旧",
-    desc: "DR・RTO・RPO・復旧戦略"
+
+  soa: {
+    title: "AWS SysOps Administrator（SOA-C02）",
+    desc: "監視・ネットワーク・セキュリティ・自動化",
+    categories: {
+      soaMonitoring: "監視",
+      soaNetworking: "ネットワーク",
+      soaSecurity: "セキュリティ",
+      soaAutomation: "自動化"
+    }
   },
-  dopMonitoring: {
-    title: "DOP 監視とログ",
-    desc: "CloudWatch・CloudTrail・X-Ray"
+
+  sap: {
+    title: "AWS Solutions Architect Professional（SAP-C02）",
+    desc: "組織設計・高度なアーキテクチャ・移行・コスト最適化",
+    categories: {
+      sapOrganization: "組織とガバナンス",
+      sapDesign: "高度な設計",
+      sapMigration: "移行・モダナイゼーション",
+      sapCost: "コスト最適化",
+      sapPractice: "総合演習"
+    }
   },
-  dopPractice: {
-    title: "DOP 総合演習",
-    desc: "DOP-C02本番対策ミックス問題"
+
+  dop: {
+    title: "AWS DevOps Engineer Professional（DOP-C02）",
+    desc: "CI/CD・構成管理・監視・自動化・信頼性",
+    categories: {
+      dopSdlc: "SDLC自動化",
+      dopConfiguration: "構成管理",
+      dopResilience: "高可用性・復旧",
+      dopMonitoring: "監視・ログ",
+      dopPractice: "総合演習"
+    }
   }
 };
 
-const currentInfo = quizInfo[type] || quizInfo.sapOrganization;
+const currentExam = exams[exam] || exams.clf;
+const currentType = type || Object.keys(currentExam.categories)[0];
 
-document.title = `AWS Professional クイズ - ${currentInfo.title}`;
-document.getElementById("pageTitle").textContent =
-  "AWS Professional クイズ";
+document.title = currentExam.title;
+document.getElementById("pageTitle").textContent = currentExam.title;
+document.getElementById("pageDesc").textContent = currentExam.desc;
 
-document.getElementById("pageDesc").textContent = currentInfo.desc;
-
+const examList = document.getElementById("examList");
 const quizList = document.getElementById("quizList");
 
-quizList.innerHTML = Object.keys(quizInfo).map(key => `
-  <a href="?type=${key}" class="${key === type ? "active" : ""}">
-    ${quizInfo[key].title}
+examList.innerHTML = Object.keys(exams).map(key => `
+  <a href="?exam=${key}" class="${key === exam ? "active" : ""}">
+    ${exams[key].title}
+  </a>
+`).join("");
+
+quizList.innerHTML = Object.keys(currentExam.categories).map(key => `
+  <a href="?exam=${exam}&type=${key}" class="${key === currentType ? "active" : ""}">
+    ${currentExam.categories[key]}
   </a>
 `).join("");
 
@@ -74,7 +109,7 @@ function shuffle(array){
   return [...array].sort(() => Math.random() - 0.5);
 }
 
-const rawQuestions = window.quizData?.[type] || [];
+const rawQuestions = window.quizData?.[currentType] || [];
 let questions = shuffle(rawQuestions.map(normalizeQuestion)).slice(0, 50);
 
 let current = 0;
@@ -93,7 +128,7 @@ function showQuestion(){
     counter.textContent = "0 / 0";
     questionEl.textContent = "問題データがありません";
     choicesEl.innerHTML = "";
-    resultEl.textContent = `window.quizData.${type} が読み込まれていません`;
+    resultEl.textContent = `window.quizData.${currentType} が読み込まれていません`;
     return;
   }
 
@@ -168,7 +203,7 @@ function finishQuiz(){
     <div class="finish">
       <p>${questions.length}問中 ${score}問正解！</p>
       <button onclick="location.reload()">もう一度挑戦</button>
-      <a class="home-btn" href="./">科目選択へ戻る</a>
+      <a class="home-btn" href="./">資格選択へ戻る</a>
     </div>
   `;
 
