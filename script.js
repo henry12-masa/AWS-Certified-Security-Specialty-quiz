@@ -1,54 +1,10 @@
 const params = new URLSearchParams(location.search);
 
-const exam = params.get("exam") || "clf";
+const exam = params.get("exam") || "sap";
 const type = params.get("type");
 
 const exams = {
-  clf: {
-    title: "AWS Certified Cloud Practitioner（CLF-C02）",
-    desc: "クラウド基礎・セキュリティ・AWSサービス・料金",
-    categories: {
-      clfCloudConcepts: "クラウド概念",
-      clfSecurity: "セキュリティ",
-      clfTechnology: "AWSサービス",
-      clfBilling: "料金・請求",
-      clfPractice: "総合演習"
-    }
-  },
-
-  saa: {
-    title: "AWS Solutions Architect Associate（SAA-C03）",
-    desc: "セキュア設計・高可用性・性能・コスト最適化",
-    categories: {
-      saaDesignSecure: "セキュア設計",
-      saaDesignResilient: "高可用性設計",
-      saaPerformance: "性能最適化",
-      saaCost: "コスト最適化"
-    }
-  },
-
-  dva: {
-    title: "AWS Developer Associate（DVA-C02）",
-    desc: "開発・セキュリティ・デプロイ・監視",
-    categories: {
-      dvaDevelopment: "開発",
-      dvaSecurity: "セキュリティ",
-      dvaDeployment: "デプロイ",
-      dvaMonitoring: "監視"
-    }
-  },
-
-  soa: {
-    title: "AWS SysOps Administrator（SOA-C02）",
-    desc: "監視・ネットワーク・セキュリティ・自動化",
-    categories: {
-      soaMonitoring: "監視",
-      soaNetworking: "ネットワーク",
-      soaSecurity: "セキュリティ",
-      soaAutomation: "自動化"
-    }
-  },
-
+  
   sap: {
     title: "AWS Solutions Architect Professional（SAP-C02）",
     desc: "組織設計・高度なアーキテクチャ・移行・コスト最適化",
