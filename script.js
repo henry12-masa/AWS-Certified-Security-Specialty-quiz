@@ -71,8 +71,10 @@ function shuffle(array){
 function getQuestions(){
   let sourceQuestions = [];
 
-  if (currentType === "all") {
+  if (currentType === "all" || currentType === "sapPractice" || currentType === "dopPractice") {
     Object.keys(currentExam.categories).forEach(key => {
+      if (key === "sapPractice" || key === "dopPractice") return;
+
       if (window.quizData?.[key]) {
         sourceQuestions = sourceQuestions.concat(window.quizData[key]);
       }
@@ -88,8 +90,11 @@ function getQuestions(){
       .map(normalizeQuestion)
       .filter(q => {
         if (!q.question || !q.choices || !q.answer) return false;
+        if (!Array.isArray(q.choices) || q.choices.length < 2) return false;
+
         if (seen.has(q.question)) return false;
         seen.add(q.question);
+
         return true;
       })
   ).slice(0, 50);
