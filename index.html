@@ -1,86 +1,64 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 
-<title>AWS資格クイズ</title>
-<meta name="description" content="AWS認定資格対策クイズ。CLF-C02、SAA-C03、DVA-C02、SOA-C02、SAP-C02、DOP-C02をまとめて学習できます。">
+<title>AWS Security Specialty（SCS-C02）クイズ</title>
+
+<meta name="description"
+content="AWS Certified Security Specialty（SCS-C02）の無料問題集。IAM・データ保護・検知・インフラセキュリティ・総合演習を50問ランダム出題。">
 
 <link rel="stylesheet" href="style.css">
+
 </head>
 
 <body>
 
 <header>
-  <h1 id="pageTitle">AWS資格クイズ</h1>
-  <p id="pageDesc">AWS認定資格を選んで、ランダム50問に挑戦しよう</p>
+
+<h1 id="pageTitle">
+AWS Security Specialty（SCS-C02）問題集
+</h1>
+
+<p id="pageDesc">
+AWS認定 Security Specialty 対策クイズ
+</p>
+
 </header>
 
+<nav id="quizList"></nav>
 
-<nav id="examList" class="exam-list"></nav>
-<nav id="quizList" class="quiz-list"></nav>
+<main>
 
-<main class="layout">
+<section class="quiz-box">
 
-  <aside class="ad-box ad-left">
-    <p>スポンサーリンク</p>
+<div class="status">
+<span id="counter"></span>
+<span id="score"></span>
+</div>
 
-    <script async
-      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8398161859137802"
-      crossorigin="anonymous"></script>
+<div class="progress">
 
-    <ins class="adsbygoogle"
-      style="display:block"
-      data-ad-client="ca-pub-8398161859137802"
-      data-ad-slot="5599163841"
-      data-ad-format="auto"
-      data-full-width-responsive="true"></ins>
+<div id="progressBar"></div>
 
-    <script>
-      (adsbygoogle = window.adsbygoogle || []).push({});
-    </script>
-  </aside>
+</div>
 
-  <section class="quiz-box">
-    <div class="status">
-      <span id="counter">1 / 50</span>
-      <span id="score">スコア: 0</span>
-    </div>
+<h2 id="question"></h2>
 
-    <div class="progress">
-      <div id="progressBar"></div>
-    </div>
+<div id="choices"></div>
 
-    <h2 id="question">読み込み中...</h2>
+<p id="result"></p>
 
-    <div id="choices"></div>
+<button id="nextBtn">
+次の問題
+</button>
 
-    <p id="result"></p>
-  </section>
-
-  <aside class="ad-box ad-right">
-    <p>スポンサーリンク</p>
-
-    <ins class="adsbygoogle"
-      style="display:block"
-      data-ad-client="ca-pub-8398161859137802"
-      data-ad-slot="5599163841"
-      data-ad-format="auto"
-      data-full-width-responsive="true"></ins>
-
-    <script>
-      (adsbygoogle = window.adsbygoogle || []).push({});
-    </script>
-  </aside>
+</section>
 
 </main>
 
-<!-- CLF-C02 -->
-
-<<!-- CLF-C02 -->
-
-<!-- SAP-C02 -->
 <!-- ANS-C01 -->
 <script src="data/ans/network-design.js"></script>
 <script src="data/ans/hybrid.js"></script>
