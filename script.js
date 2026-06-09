@@ -86,3 +86,91 @@ function normalizeQuestion(q){
     explanation: q.explanation || q.e || ""
   };
 }
+
+let questions = [];
+
+if (currentType === "all") {
+  Object.keys(currentExam.categories).forEach(key => {
+    if (window.quizData && window.quizData[key]) {
+      questions.push(...window.quizData[key].map(normalizeQuestion));
+    }
+  });
+} else {
+  questions = window.quizData?.[currentType]
+    ? window.quizData[currentType].map(normalizeQuestion)
+    : [];
+}
+
+questions = questions.sort(() => Math.random() - 0.5).slice(0, 50);
+
+let currentIndex = 0;
+let score = 0;
+let answered = false;
+
+const counter = document.getElementById("counter");
+const scoreEl = document.getElementById("score");
+const questionEl = document.getElementById("question");
+const choicesEl = document.getElementById("choices");
+const resultEl = document.getElementById("result");
+const nextBtn = document.getElementById("nextBtn");
+const progressBar = document.getElementById("progressBar");
+
+function showQuestion() {
+  answered = false;
+  resultEl.textContent = "";
+  nextBtn.style.display = "none";
+
+  if (questions.length === 0) {
+    questionEl.textContent = "問題データが読み込めませんでした";
+    choicesEl.innerHTML = "";
+    return;
+  }
+
+  if (currentIndex >= questions.length) {
+    questionEl.textContent = "終了！";
+    choicesEl.innerHTML = "";
+    counter.textContent = `${questions.length} / ${questions.length}`;
+    scoreEl.textContent = `スコア: ${score}`;
+    resultEl.textContent = `${questions.length}問中 ${score}問正解`;
+    progressBar.style.width = "100%";
+    return;
+  }
+
+  const q = questions[currentIndex];
+
+  counter.textContent = `${currentIndex + 1} / ${questions.length}`;
+  scoreEl.textContent = `スコア: ${score}`;
+  questionEl.textContent = q.question;
+  progressBar.style.width = `${((currentIndex + 1) / questions.length) * 100}%`;
+
+  choicesEl.innerHTML = "";
+
+  q.choices.forEach(choice => {
+    const btn = document.createElement("button");
+    btn.textContent = choice;
+
+    btn.onclick = () => {
+      if (answered) return;
+      answered = true;
+
+      if (choice === q.answer) {
+        score++;
+        resultEl.textContent = "正解！";
+      } else {
+        resultEl.textContent = `不正解。正解は「${q.answer}」`;
+      }
+
+      scoreEl.textContent = `スコア: ${score}`;
+      nextBtn.style.display = "block";
+    };
+
+    choicesEl.appendChild(btn);
+  });
+}
+
+nextBtn.onclick = () => {
+  currentIndex++;
+  showQuestion();
+};
+
+showQuestion();
