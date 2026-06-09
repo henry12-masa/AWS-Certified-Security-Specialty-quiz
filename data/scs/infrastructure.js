@@ -1,0 +1,185 @@
+window.quizData = window.quizData || {};
+
+window.quizData.scsInfrastructure = [
+
+{q:"VPC内のインスタンス単位で通信制御する機能は？",c:["セキュリティグループ","ネットワークACL","Route Table","Internet Gateway"],a:"セキュリティグループ"},
+{q:"サブネット単位で通信制御する機能は？",c:["ネットワークACL","セキュリティグループ","IAMロール","CloudTrail"],a:"ネットワークACL"},
+{q:"セキュリティグループの特徴は？",c:["ステートフル","ステートレス","拒否ルールを持つ","ルール番号順に評価"],a:"ステートフル"},
+{q:"ネットワークACLの特徴は？",c:["ステートレス","ステートフル","許可のみ","ENI専用"],a:"ステートレス"},
+{q:"NACLで設定できるルールは？",c:["許可と拒否","許可のみ","拒否のみ","IAM権限のみ"],a:"許可と拒否"},
+
+{q:"SSHをインターネット全体に公開する設定は？",c:["避けるべき危険な設定","常に推奨","AWS必須","無料化設定"],a:"避けるべき危険な設定"},
+{q:"EC2管理でSSHポートを開けずに接続する方法は？",c:["Systems Manager Session Manager","Elastic IPを付ける","22番を全開放","NAT Gatewayを削除"],a:"Systems Manager Session Manager"},
+{q:"Session Managerの利点は？",c:["インバウンドSSHを不要にできる","Public IPが必須になる","SGを全開放できる","IAMが不要になる"],a:"インバウンドSSHを不要にできる"},
+{q:"プライベートサブネットのEC2からSSMを使う場合に役立つものは？",c:["VPCエンドポイント","Public IP","Internet Gatewayのみ","CloudFront"],a:"VPCエンドポイント"},
+{q:"SSM Agentが必要な代表的サービスは？",c:["Systems Manager","Route 53","CloudFront","AWS WAF"],a:"Systems Manager"},
+
+{q:"インターネット公開Webアプリの入口として適切なのは？",c:["ALBまたはCloudFront + WAF","DBを直接公開","EC2を全台直接公開","全ポート開放"],a:"ALBまたはCloudFront + WAF"},
+{q:"AWS WAFを関連付けられる代表的リソースは？",c:["CloudFrontやALB","EBS Volume","IAM User","Route Table"],a:"CloudFrontやALB"},
+{q:"AWS WAFで対策できる代表的攻撃は？",c:["SQLインジェクションやXSS","EBS障害","BGP経路障害","S3容量不足"],a:"SQLインジェクションやXSS"},
+{q:"WAFのレートベースルールの用途は？",c:["大量リクエストを制限する","DNSを転送する","EC2を暗号化する","S3を圧縮する"],a:"大量リクエストを制限する"},
+{q:"WAF Managed Rulesの利点は？",c:["一般的な攻撃パターン対策を簡単に導入できる","EC2料金を下げる","S3容量を増やす","DNSを購入する"],a:"一般的な攻撃パターン対策を簡単に導入できる"},
+
+{q:"DDoS対策で標準提供される保護は？",c:["AWS Shield Standard","AWS Config","AWS Backup","Amazon Inspector"],a:"AWS Shield Standard"},
+{q:"高度なDDoS保護とDRT支援を受けるサービスは？",c:["AWS Shield Advanced","AWS Shield Standardのみ","Amazon Macie","AWS Glue"],a:"AWS Shield Advanced"},
+{q:"CloudFrontがDDoS対策に役立つ理由は？",c:["エッジでトラフィックを分散・吸収しやすい","VPCを削除できる","IAMが不要になる","EC2を暗号化する"],a:"エッジでトラフィックを分散・吸収しやすい"},
+{q:"Route 53がDDoS耐性に寄与する理由は？",c:["高可用なDNS基盤を利用できる","S3を暗号化する","EC2を停止する","SGを削除する"],a:"高可用なDNS基盤を利用できる"},
+{q:"Global Acceleratorが提供する固定IPの種類は？",c:["Anycast IP","リンクローカルIP","プライベートIPのみ","マルチキャストIP"],a:"Anycast IP"},
+
+{q:"VPC内外の通信を詳細に検査・制御するサービスは？",c:["AWS Network Firewall","Amazon Polly","AWS Backup","Amazon Textract"],a:"AWS Network Firewall"},
+{q:"Network Firewallでできる制御は？",c:["ドメイン名やプロトコルに基づく制御","EC2料金割引","S3自動翻訳","IAMユーザー作成"],a:"ドメイン名やプロトコルに基づく制御"},
+{q:"Network Firewallのログ用途として正しいものは？",c:["許可・拒否・アラート通信の分析","EC2壁紙変更","S3翻訳","IAM作成"],a:"許可・拒否・アラート通信の分析"},
+{q:"検査VPCの目的は？",c:["通信を集中検査する","S3を公開する","EC2を削除する","DNSを購入する"],a:"通信を集中検査する"},
+{q:"通信をFirewall経由にする際に重要な設計は？",c:["対称ルーティング","CIDR重複","全ポート開放","DNS無効化"],a:"対称ルーティング"},
+
+{q:"Gateway Load Balancerの用途は？",c:["サードパーティ仮想アプライアンスを透過的に挿入する","S3を公開する","IAMを作る","CloudFrontを削除する"],a:"サードパーティ仮想アプライアンスを透過的に挿入する"},
+{q:"Gateway Load Balancerで使われるプロトコルは？",c:["GENEVE","BGP","SMTP","FTP"],a:"GENEVE"},
+{q:"IDS/IPS製品をVPC通信に挿入する場合に適したサービスは？",c:["Gateway Load Balancer","Amazon Polly","AWS Glue","Route 53 Registrar"],a:"Gateway Load Balancer"},
+{q:"GWLBエンドポイントの役割は？",c:["トラフィックをGWLBサービスへ送る入口","S3を暗号化する機能","IAMロール","DNSゾーン"],a:"トラフィックをGWLBサービスへ送る入口"},
+{q:"アプライアンス挿入設計で避けるべきことは？",c:["戻り通信が別経路になる非対称ルーティング","対称ルーティング","ログ取得","冗長化"],a:"戻り通信が別経路になる非対称ルーティング"},
+
+{q:"PrivateLinkのセキュリティ上の利点は？",c:["インターネットを経由せずサービスへ接続できる","必ずPublic IPが必要","SGを使えない","DNSを使えない"],a:"インターネットを経由せずサービスへ接続できる"},
+{q:"Interface VPC Endpointで使われるネットワーク要素は？",c:["ENI","Internet Gateway","NAT Gateway","CloudFront"],a:"ENI"},
+{q:"Interface Endpointで通信制御に使えるものは？",c:["セキュリティグループ","CloudFront Cache Policy","IAM Password","S3 Lifecycle"],a:"セキュリティグループ"},
+{q:"Gateway Endpointの代表的対象サービスは？",c:["S3とDynamoDB","EC2とLambda","ALBとNLB","CloudFrontとWAF"],a:"S3とDynamoDB"},
+{q:"S3にインターネットを通さず接続するには？",c:["Gateway VPC Endpoint","Internet Gateway","Elastic IP","WAF"],a:"Gateway VPC Endpoint"},
+
+{q:"VPC Endpoint Policyの用途は？",c:["エンドポイント経由で許可する操作を制御する","EC2 CPUを制限する","DNS TTLを変える","NACL番号を管理する"],a:"エンドポイント経由で許可する操作を制御する"},
+{q:"S3を特定VPCエンドポイント経由に限定する条件キーは？",c:["aws:sourceVpce","aws:username","aws:TokenIssueTime","aws:CloudFront"],a:"aws:sourceVpce"},
+{q:"PrivateLinkサービス提供側で使うロードバランサーは？",c:["Network Load Balancer","Application Load Balancerのみ","Classic Load Balancerのみ","Route 53"],a:"Network Load Balancer"},
+{q:"PrivateLink利用側に作るものは？",c:["Interface Endpoint","Internet Gateway","NAT Instance","CloudFront Distribution"],a:"Interface Endpoint"},
+{q:"SaaSへプライベート接続する選択肢として正しいものは？",c:["AWS PrivateLink対応サービス","必ずInternet Gateway","必ずPublic IP","S3 Gateway Endpointのみ"],a:"AWS PrivateLink対応サービス"},
+
+{q:"ALBでHTTPSを終端する際に使う証明書サービスは？",c:["AWS Certificate Manager","AWS Config","AWS KMSのみ","AWS CloudTrail"],a:"AWS Certificate Manager"},
+{q:"CloudFrontでACM証明書を使う場合のリージョンは？",c:["us-east-1","ap-northeast-1のみ","任意のAZ","リージョン不要"],a:"us-east-1"},
+{q:"TLSの目的は？",c:["通信の暗号化と認証","VPC作成","EC2起動","DNS購入"],a:"通信の暗号化と認証"},
+{q:"NLBでTLS終端に使うものは？",c:["TLS Listener","WAF Ruleのみ","Route Table","NACL番号"],a:"TLS Listener"},
+{q:"mTLSの目的は？",c:["クライアントとサーバー双方を証明書で認証する","DNSを購入する","S3を圧縮する","NATを作る"],a:"クライアントとサーバー双方を証明書で認証する"},
+
+{q:"S3オリジンをCloudFront経由に限定する仕組みは？",c:["Origin Access Control","NAT Gateway","Transit Gateway","Public VIF"],a:"Origin Access Control"},
+{q:"CloudFront OACの目的は？",c:["S3への直接アクセスを防ぎCloudFront経由に制限する","VPC CIDRを増やす","EC2を高速化する","VPNを作る"],a:"S3への直接アクセスを防ぎCloudFront経由に制限する"},
+{q:"CloudFront署名付きURLの用途は？",c:["限定ユーザーにコンテンツアクセスを許可する","VPCを作る","IAMを削除する","BGPを設定する"],a:"限定ユーザーにコンテンツアクセスを許可する"},
+{q:"CloudFrontのGeo制限でできることは？",c:["国単位でアクセスを許可・拒否する","IAM権限を作る","VPCを削除する","DX接続を暗号化する"],a:"国単位でアクセスを許可・拒否する"},
+{q:"オリジン保護として適切なのは？",c:["CloudFrontからの通信のみ許可する","全世界からオリジンへ直接許可する","SGを削除する","WAFを外す"],a:"CloudFrontからの通信のみ許可する"},
+
+{q:"NAT Gatewayのセキュリティ上の特徴は？",c:["プライベートサブネットからアウトバウンド通信できる","外部から直接インバウンドを受ける","SGを関連付ける","DNS専用"],a:"プライベートサブネットからアウトバウンド通信できる"},
+{q:"NAT Gatewayを配置するサブネットは？",c:["パブリックサブネット","プライベートサブネット","Route 53","CloudFront"],a:"パブリックサブネット"},
+{q:"IPv6のアウトバウンド専用通信に使うものは？",c:["Egress-only Internet Gateway","NAT Gateway","Virtual Private Gateway","Customer Gateway"],a:"Egress-only Internet Gateway"},
+{q:"アウトバウンド通信の宛先制御を強化するには？",c:["Network Firewallやプロキシを使う","全通信を許可する","ログを取らない","NACLを削除する"],a:"Network Firewallやプロキシを使う"},
+{q:"プライベートサブネットからAWS APIへ接続する安全な選択肢は？",c:["VPC Endpoint","Public IP必須","Internet Gatewayのみ","SSH必須"],a:"VPC Endpoint"},
+
+{q:"Route 53 Resolver DNS Firewallの用途は？",c:["不審ドメインへのDNS問い合わせを制御する","EC2を起動する","DXを作る","S3を複製する"],a:"不審ドメインへのDNS問い合わせを制御する"},
+{q:"DNS Firewallで管理するものは？",c:["ドメインリスト","EC2 AMI","VPC CIDR","S3オブジェクト"],a:"ドメインリスト"},
+{q:"マルウェア通信の出口対策として有効なのは？",c:["悪性ドメインのブロック","全DNS許可","ログ無効化","NACL削除"],a:"悪性ドメインのブロック"},
+{q:"DNSクエリログを記録する機能は？",c:["Route 53 Resolver Query Logging","CloudFront OAC","AWS Backup Vault","EBS Snapshot"],a:"Route 53 Resolver Query Logging"},
+{q:"DNSログの保存先として使えるものは？",c:["CloudWatch LogsやS3","IAMのみ","EBSのみ","NAT Gatewayのみ"],a:"CloudWatch LogsやS3"},
+
+{q:"Direct Connectの通信を暗号化したい場合の選択肢は？",c:["VPN over Direct Connect","Internet Gateway追加","NACL削除","SG全開放"],a:"VPN over Direct Connect"},
+{q:"Direct ConnectのMACsecの目的は？",c:["レイヤー2暗号化","DNS転送","S3暗号化","IAM認証"],a:"レイヤー2暗号化"},
+{q:"Site-to-Site VPNで使われる暗号化技術は？",c:["IPsec","WEP","FTP","SMTP"],a:"IPsec"},
+{q:"VPN接続の安全運用で重要なのは？",c:["トンネル状態と設定変更を監視する","監視しない","1本だけ使う","暗号化しない"],a:"トンネル状態と設定変更を監視する"},
+{q:"Customer Gatewayとは？",c:["オンプレミス側VPN装置をAWS上で表すリソース","AWS側Internet Gateway","S3エンドポイント","DNSサーバー"],a:"オンプレミス側VPN装置をAWS上で表すリソース"},
+
+{q:"VPC Flow Logsで確認できるものは？",c:["通信元・宛先・ポート・ACCEPT/REJECT","HTTPS本文","パスワード","SQL全文"],a:"通信元・宛先・ポート・ACCEPT/REJECT"},
+{q:"Flow Logsの保存先として使えるものは？",c:["CloudWatch LogsやS3","IAMのみ","EBSのみ","Route 53のみ"],a:"CloudWatch LogsやS3"},
+{q:"ネットワークセキュリティ調査でFlow Logsが役立つ理由は？",c:["不審通信や拒否通信を確認できる","パスワードを確認できる","EC2画面を確認できる","DNSを購入できる"],a:"不審通信や拒否通信を確認できる"},
+{q:"Traffic Mirroringの用途は？",c:["ENIの通信を監視アプライアンスへ複製する","NAT Gatewayを作成する","DNSを登録する","S3に静的サイトを作る"],a:"ENIの通信を監視アプライアンスへ複製する"},
+{q:"Traffic Mirroringの代表的な目的は？",c:["侵入検知や詳細パケット分析","EC2料金削減のみ","DNS登録","CloudFrontキャッシュ削除"],a:"侵入検知や詳細パケット分析"},
+
+{q:"GuardDutyが分析するネットワーク系データの例は？",c:["VPC Flow LogsやDNSログ","EC2壁紙","S3タグ","IAM表示色"],a:"VPC Flow LogsやDNSログ"},
+{q:"GuardDutyで検出した不審EC2の対応例は？",c:["隔離用SGへ変更する","SGを全開放する","ログを削除する","IAMを公開する"],a:"隔離用SGへ変更する"},
+{q:"Security Hubの役割は？",c:["複数セキュリティ検出結果を集約する","DNSを転送する","EC2を起動する","VPNを作る"],a:"複数セキュリティ検出結果を集約する"},
+{q:"AWS Config Rulesで確認できる例は？",c:["SGが0.0.0.0/0でSSH公開されていないか","EC2壁紙","S3ファイル名","IAM色"],a:"SGが0.0.0.0/0でSSH公開されていないか"},
+{q:"CloudTrailで確認できるものは？",c:["誰がどのAPIを実行したか","HTTPS本文","TCP再送回数","EC2画面"],a:"誰がどのAPIを実行したか"},
+
+{q:"セキュリティグループ変更を自動検知する構成は？",c:["CloudTrail + EventBridge","S3 + Glacier","Route 53 + Registrar","EC2 + AMI"],a:"CloudTrail + EventBridge"},
+{q:"危険なSGを自動修復する構成は？",c:["EventBridge + Lambda","NAT + IGW","S3 + Static Website","EBS + Snapshot"],a:"EventBridge + Lambda"},
+{q:"自動修復Lambdaの権限設計で重要なことは？",c:["必要最小限の権限にする","常にAdministratorAccess","rootキーを使う","ログを残さない"],a:"必要最小限の権限にする"},
+{q:"Firewall Managerの用途は？",c:["複数アカウントにセキュリティポリシーを一元適用する","EC2を翻訳する","S3を削除する","DNSを購入する"],a:"複数アカウントにセキュリティポリシーを一元適用する"},
+{q:"Firewall Managerで管理できる代表例は？",c:["WAFやSecurity Groupポリシー","EC2 AMIのみ","S3本文","IAMパスワード"],a:"WAFやSecurity Groupポリシー"},
+
+{q:"複数アカウントのネットワークセキュリティ統制に有効なものは？",c:["AWS Firewall Manager","Amazon Polly","AWS Glue","Amazon Forecast"],a:"AWS Firewall Manager"},
+{q:"本番と開発ネットワークの分離方法として適切なのは？",c:["VPCやサブネット、ルートを分ける","同一サブネットに混在","全通信許可","CIDR重複"],a:"VPCやサブネット、ルートを分ける"},
+{q:"Transit Gatewayで環境分離する方法は？",c:["TGWルートテーブルを分ける","全アタッチメントを同一ルートにする","NATを削除する","全CIDRを重複させる"],a:"TGWルートテーブルを分ける"},
+{q:"共有サービスVPCに集約しやすいものは？",c:["DNS、検査、共通エンドポイント","全DB公開","IAM削除","CloudFront削除"],a:"DNS、検査、共通エンドポイント"},
+{q:"最小権限のネットワーク設計とは？",c:["必要な送信元・宛先・ポートのみ許可する","全通信許可","全SG公開","ログ無効化"],a:"必要な送信元・宛先・ポートのみ許可する"},
+
+{q:"VPC Latticeの用途は？",c:["複数VPC/アカウント間のサービス通信を管理する","S3を公開する","EC2をバックアップする","DNSを購入する"],a:"複数VPC/アカウント間のサービス通信を管理する"},
+{q:"VPC Latticeで実現できることは？",c:["サービス間通信の認証・認可・監視","Direct Connect敷設","S3暗号化","CloudFront削除"],a:"サービス間通信の認証・認可・監視"},
+{q:"サービス間通信を暗号化する代表的技術は？",c:["TLS","Telnet","FTP","WEP"],a:"TLS"},
+{q:"内部サービス通信でゼロトラストに近い考え方は？",c:["通信ごとに認証・認可・監査する","VPC内なら全許可","ログ不要","SG不要"],a:"通信ごとに認証・認可・監査する"},
+{q:"サービス間通信の制御を強めるために有効なのは？",c:["VPC Lattice auth policy","NAT Gatewayのみ","Internet Gatewayのみ","EBS Snapshot"],a:"VPC Lattice auth policy"},
+
+{q:"EC2のインスタンスメタデータサービスで推奨されるバージョンは？",c:["IMDSv2","IMDSv1のみ","FTP","SMTP"],a:"IMDSv2"},
+{q:"IMDSv2の利点は？",c:["セッション指向でSSRFリスクを低減しやすい","Public IPが不要になるだけ","IAMが不要になる","SGが不要になる"],a:"セッション指向でSSRFリスクを低減しやすい"},
+{q:"EC2に長期アクセスキーを置かない理由は？",c:["漏えい時のリスクを下げるため","CPUを上げるため","DNSを高速化するため","S3を増やすため"],a:"漏えい時のリスクを下げるため"},
+{q:"EC2からAWS APIへ安全にアクセスする方法は？",c:["IAMロールを付与する","rootキーを保存する","アクセスキーをコード直書きする","S3を公開する"],a:"IAMロールを付与する"},
+{q:"EC2インスタンスプロファイルとは？",c:["IAMロールをEC2へ関連付ける仕組み","EBSの暗号鍵","VPCのCIDR","DNSゾーン"],a:"IAMロールをEC2へ関連付ける仕組み"},
+
+{q:"EBSボリュームの暗号化に使うサービスは？",c:["AWS KMS","AWS WAF","Route 53","CloudFront"],a:"AWS KMS"},
+{q:"EBS暗号化で保護されるものは？",c:["保存データとスナップショット等","DNS TTL","SGルール","IAMユーザー名"],a:"保存データとスナップショット等"},
+{q:"EBSスナップショット共有で注意すべきことは？",c:["暗号化キー権限と共有範囲","EC2壁紙","Route 53 TTL","NAT Gateway数"],a:"暗号化キー権限と共有範囲"},
+{q:"AMI共有時のセキュリティ注意点は？",c:["機密情報を含めない、共有先を限定する","全世界に公開する","秘密鍵を含める","ログを消す"],a:"機密情報を含めない、共有先を限定する"},
+{q:"EC2の脆弱性管理に使うサービスは？",c:["Amazon Inspector","Amazon Polly","AWS Glue","Amazon Translate"],a:"Amazon Inspector"},
+
+{q:"コンテナイメージの脆弱性を検出するサービスは？",c:["Amazon Inspector","Route 53","AWS Backup","Amazon Macie"],a:"Amazon Inspector"},
+{q:"ECRのイメージスキャンで確認するものは？",c:["脆弱性","DNS TTL","VPC CIDR","CloudFront価格"],a:"脆弱性"},
+{q:"ECSタスクにAWS権限を渡す推奨方法は？",c:["タスクロールを使う","アクセスキーをコンテナに直書きする","rootキーを渡す","全S3を公開する"],a:"タスクロールを使う"},
+{q:"EKS PodへIAM権限を安全に付与する方法は？",c:["IRSA","rootキー共有","ノードの長期キー共有","Public IP付与"],a:"IRSA"},
+{q:"IRSAの目的は？",c:["Kubernetes ServiceAccountにIAMロールを関連付ける","S3を圧縮する","DNSを購入する","VPCを削除する"],a:"Kubernetes ServiceAccountにIAMロールを関連付ける"},
+
+{q:"Lambdaの実行権限を定義するものは？",c:["Execution Role","Security Groupのみ","NACLのみ","Hosted Zone"],a:"Execution Role"},
+{q:"Lambda関数のリソースベースポリシーで制御するものは？",c:["誰が関数を呼び出せるか","関数のメモリだけ","DNS TTL","VPC CIDR"],a:"誰が関数を呼び出せるか"},
+{q:"LambdaをVPC内リソースへ接続させるには？",c:["VPC設定でサブネットとSGを指定する","Public IPを必ず付ける","Route 53を削除する","S3を公開する"],a:"VPC設定でサブネットとSGを指定する"},
+{q:"Lambdaの環境変数に秘密情報を保存する場合の注意は？",c:["KMS暗号化やSecrets Manager利用を検討する","平文で公開する","READMEに書く","全員にメールする"],a:"KMS暗号化やSecrets Manager利用を検討する"},
+{q:"Lambdaの不正呼び出しを防ぐには？",c:["リソースポリシーとIAM権限を適切に制御する","全員Invoke許可","ログ削除","MFA無効化"],a:"リソースポリシーとIAM権限を適切に制御する"},
+
+{q:"RDSへの安全な接続設計として適切なのは？",c:["プライベートサブネットに配置し必要なSGだけ許可する","インターネット全体に公開する","Public IP必須","全ポート開放"],a:"プライベートサブネットに配置し必要なSGだけ許可する"},
+{q:"RDS暗号化に使うサービスは？",c:["AWS KMS","AWS WAF","CloudFront","Route 53"],a:"AWS KMS"},
+{q:"RDSで認証情報を安全に管理するサービスは？",c:["AWS Secrets Manager","Amazon Polly","AWS Batch","Route 53"],a:"AWS Secrets Manager"},
+{q:"RDS IAM認証の特徴は？",c:["IAMを使ってDB接続認証できる","DBを必ず公開する","パスワード不要で誰でも接続","KMS不要"],a:"IAMを使ってDB接続認証できる"},
+{q:"RDS Performance Insightsは主に何を見るサービスか？",c:["DBパフォーマンス分析","WAFログ","DNSクエリ","IAMユーザー"],a:"DBパフォーマンス分析"},
+
+{q:"Secrets Managerのローテーションで使われる代表サービスは？",c:["Lambda","CloudFront","NAT Gateway","Route 53"],a:"Lambda"},
+{q:"DBパスワードをアプリに直書きしない理由は？",c:["漏えいリスクを下げるため","CPUを上げるため","DNSを速くするため","VPCを作るため"],a:"漏えいリスクを下げるため"},
+{q:"RDSスナップショット共有で注意すべきことは？",c:["共有範囲とKMSキー権限","ALBリスナー","CloudFront OAC","NACL番号"],a:"共有範囲とKMSキー権限"},
+{q:"DynamoDBの暗号化で使われるサービスは？",c:["AWS KMS","AWS WAF","Amazon Route 53","AWS Shield"],a:"AWS KMS"},
+{q:"DynamoDBへのアクセス制御に使うものは？",c:["IAMポリシー","Security Groupのみ","NACLのみ","Internet Gateway"],a:"IAMポリシー"},
+
+{q:"S3 Block Public Accessの用途は？",c:["意図しないパブリック公開を防ぐ","S3を高速化する","EC2を暗号化する","DNSを購入する"],a:"意図しないパブリック公開を防ぐ"},
+{q:"S3バケットポリシーの用途は？",c:["バケットやオブジェクトへのアクセス制御","EC2 CPU管理","VPC作成","Route 53 TTL管理"],a:"バケットやオブジェクトへのアクセス制御"},
+{q:"S3暗号化でSSE-KMSを使う利点は？",c:["KMSによるキー管理と監査ができる","暗号化されない","Public IPが必要","NATが不要になるだけ"],a:"KMSによるキー管理と監査ができる"},
+{q:"S3 Object Lockの用途は？",c:["一定期間削除や上書きを防ぐ","S3を公開する","EC2を起動する","DNSを登録する"],a:"一定期間削除や上書きを防ぐ"},
+{q:"S3アクセスログやCloudTrail Data Eventを有効化する目的は？",c:["オブジェクトアクセスを監査する","EC2 CPUを上げる","DNSを高速化する","NATを作る"],a:"オブジェクトアクセスを監査する"},
+
+{q:"Macieの用途は？",c:["S3内の機密データを検出する","VPCを作る","EC2を停止する","DNSを購入する"],a:"S3内の機密データを検出する"},
+{q:"S3を特定VPC Endpointからのみ許可するには？",c:["バケットポリシーでaws:sourceVpceを使う","全世界公開する","IAMを削除する","NATを使う"],a:"バケットポリシーでaws:sourceVpceを使う"},
+{q:"CloudFront経由のみにS3アクセスを制限するには？",c:["OACとバケットポリシーを使う","S3を公開する","SGを付ける","NATを作る"],a:"OACとバケットポリシーを使う"},
+{q:"S3バケットをログ保管先にする場合の推奨は？",c:["暗号化・アクセス制限・改ざん防止を設定する","パブリック書き込み許可","削除権限を全員付与","バージョニング無効"],a:"暗号化・アクセス制限・改ざん防止を設定する"},
+{q:"S3 Object OwnershipでACLを無効化する設定は？",c:["Bucket owner enforced","PublicReadOnly","ACLRequired","OwnerUnknown"],a:"Bucket owner enforced"},
+
+{q:"AWS KMSの主な用途は？",c:["暗号鍵の作成・管理・利用制御","VPC作成","EC2起動","DNS購入"],a:"暗号鍵の作成・管理・利用制御"},
+{q:"KMSキーポリシーの役割は？",c:["キーを誰が使えるか制御する","VPCを作る","EC2のOSを更新する","DNSを転送する"],a:"キーを誰が使えるか制御する"},
+{q:"KMS Decrypt権限を制限する理由は？",c:["暗号化データの不正復号を防ぐため","EC2を速くするため","DNSを買うため","NATを作るため"],a:"暗号化データの不正復号を防ぐため"},
+{q:"KMSキーの利用履歴を確認するサービスは？",c:["CloudTrail","CloudFront","AWS Batch","Amazon Lex"],a:"CloudTrail"},
+{q:"KMSグラントの用途は？",c:["限定的にキー使用権限を委任する","VPCを作る","EC2を停止する","DNSを登録する"],a:"限定的にキー使用権限を委任する"},
+
+{q:"Secrets Managerの用途は？",c:["シークレットの保管とローテーション","VPC作成","DNS購入","EC2翻訳"],a:"シークレットの保管とローテーション"},
+{q:"Parameter Store SecureStringで使う暗号化サービスは？",c:["AWS KMS","AWS WAF","CloudFront","Route 53"],a:"AWS KMS"},
+{q:"アプリケーションの秘密情報管理で避けるべきことは？",c:["コードやAMIに直書きする","Secrets Managerを使う","ローテーションする","最小権限にする"],a:"コードやAMIに直書きする"},
+{q:"秘密情報ローテーションの目的は？",c:["漏えい時の影響を下げる","EC2を高速化する","DNSを購入する","S3を圧縮する"],a:"漏えい時の影響を下げる"},
+{q:"Secrets Managerアクセス制御で使うものは？",c:["IAMポリシーやリソースポリシー","Route Table","NACL番号","VPC CIDR"],a:"IAMポリシーやリソースポリシー"},
+
+{q:"AWS Backupの用途は？",c:["AWSリソースのバックアップ管理","WAFルール管理","DNS購入","IAM認証"],a:"AWSリソースのバックアップ管理"},
+{q:"AWS Backup Vault Lockの用途は？",c:["バックアップ削除や変更を防ぐ保護を強化する","EC2を高速化する","S3を公開する","DNSを購入する"],a:"バックアップ削除や変更を防ぐ保護を強化する"},
+{q:"ランサムウェア対策として有効なバックアップ設計は？",c:["削除保護・世代管理・権限分離","同一権限で全削除可能","バックアップなし","ログなし"],a:"削除保護・世代管理・権限分離"},
+{q:"EBSスナップショットの暗号化に使われるものは？",c:["KMSキー","WAFルール","Route 53","NAT Gateway"],a:"KMSキー"},
+{q:"バックアップ復旧テストを行う理由は？",c:["実際に復元できることを確認するため","料金を無料にするため","DNSを削除するため","EC2を停止するため"],a:"実際に復元できることを確認するため"},
+
+{q:"インフラ保護でAWS Configを使う目的は？",c:["危険な設定を継続的に検出する","EC2を翻訳する","S3を圧縮する","DNSを購入する"],a:"危険な設定を継続的に検出する"},
+{q:"Security HubのFoundational Security Best Practicesで確認できる例は？",c:["暗号化や公開設定などのベストプラクティス","EC2壁紙","DNS購入履歴","S3タグ色"],a:"暗号化や公開設定などのベストプラクティス"},
+{q:"CloudTrailでインフラ変更を監査する理由は？",c:["誰が何を変更したか追跡するため","EC2を速くするため","S3を翻訳するため","DNSを買うため"],a:"誰が何を変更したか追跡するため"},
+{q:"GuardDutyで侵害兆候を検知した後に行うべきことは？",c:["影響範囲を調査し隔離・復旧する","ログ削除","MFA無効化","全通信許可"],a:"影響範囲を調査し隔離・復旧する"},
+{q:"インフラ保護のベストプラクティスは？",c:["多層防御、最小権限、暗号化、監視を組み合わせる","全公開","ログ削除","root常用"],a:"多層防御、最小権限、暗号化、監視を組み合わせる"}
+
+];
