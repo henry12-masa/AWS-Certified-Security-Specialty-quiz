@@ -1,240 +1,184 @@
 body{
-
-font-family:sans-serif;
-margin:0;
-background:#f5f5f5;
-
+  font-family:sans-serif;
+  margin:0;
+  background:#f5f5f5;
 }
 
 header{
-
-background:#232f3e;
-color:white;
-
-padding:25px;
-
-text-align:center;
-
+  background:#232f3e;
+  color:#fff;
+  padding:25px;
+  text-align:center;
 }
 
 #pageTitle{
-
-margin:0;
-
-font-size:34px;
-
+  margin:0;
+  font-size:34px;
 }
 
 #pageDesc{
-
-margin-top:10px;
-
+  margin-top:10px;
 }
 
+/* ===== 試験一覧・カテゴリ一覧 ===== */
+
+#examList,
 #quizList{
-
-display:flex;
-
-justify-content:center;
-
-flex-wrap:wrap;
-
-gap:10px;
-
-padding:20px;
-
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:12px;
+  padding:20px;
 }
 
+#examList a,
 #quizList a{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
 
-background:#ff9900;
+  min-width:180px;
+  min-height:50px;
 
-color:white;
+  padding:12px 20px;
 
-text-decoration:none;
+  background:#ff9900;
+  color:#fff;
+  text-decoration:none;
+  font-weight:bold;
+  font-size:16px;
 
-padding:10px 18px;
+  border-radius:10px;
+  border:2px solid #ff9900;
 
-border-radius:8px;
-
-font-weight:bold;
-
+  box-sizing:border-box;
+  transition:all .2s;
 }
 
+#examList a:hover,
 #quizList a:hover{
-
-opacity:0.8;
-
+  background:#e88a00;
+  transform:translateY(-2px);
 }
+
+#examList a.active,
+#quizList a.active{
+  background:#232f3e;
+  border-color:#232f3e;
+  color:#fff;
+}
+
+/* ===== クイズ本体 ===== */
 
 main{
-
-display:flex;
-
-justify-content:center;
-
-padding:20px;
-
+  display:flex;
+  justify-content:center;
+  padding:20px;
 }
 
 .quiz-box{
-
-background:white;
-
-width:900px;
-
-max-width:95%;
-
-padding:30px;
-
-border-radius:12px;
-
-box-shadow:0 0 8px rgba(0,0,0,.15);
-
+  background:#fff;
+  width:900px;
+  max-width:95%;
+  padding:30px;
+  border-radius:12px;
+  box-shadow:0 0 8px rgba(0,0,0,.15);
 }
 
 .status{
-
-display:flex;
-
-justify-content:space-between;
-
-font-size:18px;
-
-margin-bottom:15px;
-
+  display:flex;
+  justify-content:space-between;
+  font-size:18px;
+  margin-bottom:15px;
 }
 
 .progress{
-
-width:100%;
-
-height:12px;
-
-background:#ddd;
-
-border-radius:20px;
-
-overflow:hidden;
-
-margin-bottom:20px;
-
+  width:100%;
+  height:12px;
+  background:#ddd;
+  border-radius:20px;
+  overflow:hidden;
+  margin-bottom:20px;
 }
 
 #progressBar{
-
-height:100%;
-
-width:0;
-
-background:#ff9900;
-
-transition:.3s;
-
+  width:0;
+  height:100%;
+  background:#ff9900;
+  transition:.3s;
 }
 
 #question{
-
-font-size:26px;
-
-margin-bottom:20px;
-
+  font-size:26px;
+  margin-bottom:20px;
 }
 
 #choices{
-
-display:flex;
-
-flex-direction:column;
-
-gap:12px;
-
+  display:flex;
+  flex-direction:column;
+  gap:12px;
 }
 
 #choices button{
-
-padding:15px;
-
-font-size:18px;
-
-cursor:pointer;
-
-border:none;
-
-border-radius:8px;
-
-background:#ececec;
-
-transition:.2s;
-
+  padding:15px;
+  font-size:18px;
+  cursor:pointer;
+  border:none;
+  border-radius:8px;
+  background:#ececec;
+  transition:.2s;
 }
 
 #choices button:hover{
-
-background:#d5d5d5;
-
+  background:#d5d5d5;
 }
 
 #result{
-
-font-size:22px;
-
-font-weight:bold;
-
-margin-top:20px;
-
-text-align:center;
-
+  font-size:22px;
+  font-weight:bold;
+  margin-top:20px;
+  text-align:center;
 }
 
 #nextBtn{
-
-margin-top:20px;
-
-display:none;
-
-width:100%;
-
-padding:15px;
-
-font-size:18px;
-
-background:#ff9900;
-
-color:white;
-
-border:none;
-
-border-radius:8px;
-
-cursor:pointer;
-
+  display:none;
+  width:100%;
+  margin-top:20px;
+  padding:15px;
+  font-size:18px;
+  background:#ff9900;
+  color:#fff;
+  border:none;
+  border-radius:8px;
+  cursor:pointer;
 }
 
 #nextBtn:hover{
-
-opacity:.85;
-
+  opacity:.85;
 }
 
-@media(max-width:768px){
+/* ===== スマホ対応 ===== */
 
-#pageTitle{
+@media (max-width:768px){
 
-font-size:26px;
+  #pageTitle{
+    font-size:26px;
+  }
 
-}
+  #question{
+    font-size:22px;
+  }
 
-#question{
+  #choices button{
+    font-size:16px;
+  }
 
-font-size:22px;
-
-}
-
-#choices button{
-
-font-size:16px;
-
-}
+  #examList a,
+  #quizList a{
+    width:100%;
+    min-width:unset;
+    min-height:48px;
+    font-size:15px;
+  }
 
 }
